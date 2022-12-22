@@ -1,0 +1,28 @@
+const colors = {
+  PRIMARY: '#4ADF79',
+  WHITE: '#FFFFFF',
+  BLACK: '#000000',
+  GREEN: '#4FAF49',
+  TEAL: '#00B6B6',
+  SECONDARY_LIGHT: 'rgba(255,255,255,0.7)',
+  GREY_SEPARATOR: '#F0F0F0',
+  ORANGE: '#FF9E00',
+  BLACK_75: 'rgba(0, 0, 0, 0.75)',
+  BLACK_STRIKE: '#555555',
+  SECONDARY_GREY: '#A8A8A8',
+  PRIMARY_GREY: '#757575',
+  LIGHT_GREY: '#959595',
+  DARK_GREY: '#555555',
+  BORDER_COLOR: '#DEDEDE',
+  BLACK_LIGHT: '#00000050',
+  TRANSPARENT: '#00000000',
+  YELLOW: '#FFB900',
+  TRANSPARENT45: 'rgba(0, 0, 0, 0.45)',
+  RED: '#FF0000',
+}
+
+const dark = {
+  colors,
+}
+
+export { dark }

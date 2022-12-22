@@ -1,0 +1,65 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "app/assets/fonts/Roboto-Bold.ttf",
+      "sha1": "0ce37ced9c5fcac9bdc452a432c1258870ba4677"
+    },
+    {
+      "path": "app/assets/fonts/Roboto-Medium.ttf",
+      "sha1": "5f16f4d6dbb4a4f12d8ae96488ac209bb49762a5"
+    },
+    {
+      "path": "app/assets/fonts/Roboto-Regular.ttf",
+      "sha1": "dd1b1db13ff1f72138c134c62f38fef83749f36a"
+    },
+    {
+      "path": "app/assets/fonts/SFPro-Bold.otf",
+      "sha1": "100e7b7fd24facbca4db38e6d4d7e01c73b82818"
+    },
+    {
+      "path": "app/assets/fonts/SFPro-Medium.otf",
+      "sha1": "a5f5e08dd38cac2f857fb7510f7e92a2399b6f5c"
+    },
+    {
+      "path": "app/assets/fonts/SFPro-Regular.otf",
+      "sha1": "e19df199e78d296e5b6491d4832a76756532ed43"
+    },
+    {
+      "path": "app/assets/fonts/SFProText-Bold.ttf",
+      "sha1": "632e6cea171b276e5dd1f13b152c702fbf562cee"
+    },
+    {
+      "path": "app/assets/fonts/SFProText-Medium.ttf",
+      "sha1": "3b8df618cd23e83843b16a8a32de1ddc9de44df4"
+    },
+    {
+      "path": "app/assets/fonts/SFProText-Regular.ttf",
+      "sha1": "b4893462f2289df6978f9462a63db9e64bcc9342"
+    },
+    {
+      "path": "app/assets/fonts/SFProText-Semibold.ttf",
+      "sha1": "9560ae412d73c7c9af72333db50464b4e597b0f9"
+    },
+    {
+      "path": "app/assets/fonts/verdeicon.eot",
+      "sha1": "cacbe0f226bce407a7c2d9643820194c988f080a"
+    },
+    {
+      "path": "app/assets/fonts/verdeicon.svg",
+      "sha1": "67f92fd7eac6dde9eb2d897ab818bdb921dbe82a"
+    },
+    {
+      "path": "app/assets/fonts/verdeicon.ttf",
+      "sha1": "339f46851003cae2e706cb27b57a50fc19b1b059"
+    },
+    {
+      "path": "app/assets/fonts/verdeicon.woff",
+      "sha1": "22197bc8bea449671d8d990beb1a76c4b1073265"
+    },
+    {
+      "path": "app/assets/fonts/verdeicon.woff2",
+      "sha1": "9ed114d3e956c858dc99d5e3fa3f74d9233dc06f"
+    }
+  ]
+}
