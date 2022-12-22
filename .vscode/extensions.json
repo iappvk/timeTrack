@@ -1,0 +1,28 @@
+{
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "2gua.rainbow-brackets",
+    "andys8.jest-snippets",
+    "christian-kohler.path-intellisense",
+    "cssho.vscode-svgviewer",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner",
+    "flowtype.flow-for-vscode",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-complete-tag",
+    "formulahendry.auto-rename-tag",
+    "ionutvmi.path-autocomplete",
+    "ms-vscode.typescript-javascript-grammar",
+    "msjsdiag.debugger-for-chrome",
+    "naumovs.color-highlight",
+    "Orta.vscode-jest",
+    "steoates.autoimport",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "wayou.vscode-todo-highlight",
+    "ryu1kn.partial-diff",
+    "dbaeumer.vscode-eslint"
+  ],
+  // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+  "unwantedRecommendations": ["eg2.tslint"]
+}

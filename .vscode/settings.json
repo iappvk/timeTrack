@@ -1,0 +1,45 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.enable": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.expo": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/build": true, // Disable it to view build
+    "**/yarn.lock": true,
+    "**/tsconfig.json": true,
+    "**/babel.config.js": true,
+    "tsconfig.base.json": true,
+    ".solidarity": true,
+    ".prettierrc.js": true,
+    ".prettierignore": true,
+    ".eslintrc.js": true,
+    ".eslintignore": true,
+    "**/.gitignore": true,
+    "**/.gitattributes": true,
+    "**/.buckconfig": true,
+    "**/.watchmanconfig": true,
+    "**/metro.config.js": true,
+    "**/react-native.config.js": true,
+    "**/jest.config.js": true,
+    "**/tslint.json": true,
+    "**/codegen.yml": true,
+    "**/assets.zip": true,
+    "**/config-overrides.js": true,
+    ".vscode": true,
+    "apollo.config.js": true,
+    "**/node_modules": true, // Disable it to view node_modules
+    "_node-version":true,
+    "_ruby-version":true,
+    "Gemfile":true,
+    "_bundle": true
+  }
+}
