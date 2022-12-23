@@ -42,24 +42,24 @@
       "sha1": "9560ae412d73c7c9af72333db50464b4e597b0f9"
     },
     {
-      "path": "app/assets/fonts/verdeicon.eot",
-      "sha1": "cacbe0f226bce407a7c2d9643820194c988f080a"
+      "path": "app/assets/fonts/timer.eot",
+      "sha1": "1ab6a2bab75ad55c5b35cc904b51480ea6f198f4"
     },
     {
-      "path": "app/assets/fonts/verdeicon.svg",
-      "sha1": "67f92fd7eac6dde9eb2d897ab818bdb921dbe82a"
+      "path": "app/assets/fonts/timer.svg",
+      "sha1": "c64e6a4c4f2e7b723a9200d027d7ee4eb2a7a984"
     },
     {
-      "path": "app/assets/fonts/verdeicon.ttf",
-      "sha1": "339f46851003cae2e706cb27b57a50fc19b1b059"
+      "path": "app/assets/fonts/timer.ttf",
+      "sha1": "39121cc8afc6d3d2cb821b39c31dcbc6dc209e25"
     },
     {
-      "path": "app/assets/fonts/verdeicon.woff",
-      "sha1": "22197bc8bea449671d8d990beb1a76c4b1073265"
+      "path": "app/assets/fonts/timer.woff",
+      "sha1": "85128b3615673537d8c6ec56e6fb518a74f5b0ab"
     },
     {
-      "path": "app/assets/fonts/verdeicon.woff2",
-      "sha1": "9ed114d3e956c858dc99d5e3fa3f74d9233dc06f"
+      "path": "app/assets/fonts/timer.woff2",
+      "sha1": "48e3b660085b635c851761cf6b2fe889e9b14b6c"
     }
   ]
 }

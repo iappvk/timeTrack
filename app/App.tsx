@@ -11,10 +11,9 @@
 import React from 'react'
 import { Appearance, StyleSheet } from 'react-native'
 
-import { Box } from './components/Box'
-import { Text } from './components/Text'
 import { UiThemeProvider } from './components/theme/UiThemeProvider'
 import { RootStore, StoreProvider } from './data/store'
+import { AppStack } from './screens/RootNav'
 
 const App = () => {
   const isDarkTheme = Appearance.getColorScheme() === 'dark'
@@ -22,9 +21,7 @@ const App = () => {
   return (
     <StoreProvider value={RootStore}>
       <UiThemeProvider initialThemeName={isDarkTheme ? 'dark' : 'light'}>
-        <Box bg="PRIMARY" flex={1}>
-          <Text value="Testing" fontSize={30} color="YELLOW" />
-        </Box>
+        <AppStack />
       </UiThemeProvider>
     </StoreProvider>
   )

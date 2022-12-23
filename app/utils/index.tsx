@@ -1,7 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { Dimensions, Platform, ScaledSize } from 'react-native'
 import { ThemeContext } from 'styled-components'
 
+const STORE_KEY_ALL_TASK = 'all_task'
 const useBreakPoint = (isEnabled: boolean) => {
   const [dimensions, setDimensions] = useState(Dimensions.get('window'))
 
@@ -81,4 +83,35 @@ const CUSTOM_FONT = {
   }),
 }
 
-export { CUSTOM_FONT }
+export const storeData = async (value: any, key: string) => {
+  try {
+    const jsonValue = JSON.stringify(value)
+    await AsyncStorage.setItem(key, jsonValue)
+  } catch (e) {
+    console.log('e: ', e)
+  }
+}
+
+export const removeData = async (key: string) => {
+  try {
+    await AsyncStorage.removeItem(key)
+  } catch (e) {
+    console.log('e: ', e)
+  }
+}
+export const getStoreData = async (key: string) => {
+  try {
+    // const keys = await AsyncStorage.getAllKeys()
+
+    // const result = await AsyncStorage.multiGet(keys)
+    // console.log(' The keyts ' + JSON.stringify(result))
+
+    const jsonValue = await AsyncStorage.getItem(key)
+
+    return jsonValue != null ? JSON.parse(jsonValue) : null
+  } catch (e) {
+    console.log('*****  error : ', e)
+  }
+}
+
+export { CUSTOM_FONT, STORE_KEY_ALL_TASK }

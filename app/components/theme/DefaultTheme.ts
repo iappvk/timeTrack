@@ -1,5 +1,8 @@
 const defaultColors = {
-  PRIMARY: '#01874E',
+  BRAND_PRIMARY_ACTION: '#EC1C24',
+  BRAND_PRIMARY_BG: '#AA0023',
+
+  PRIMARY: '#EC1C24',
   WHITE: '#FFFFFF',
   BLACK: '#000000',
   GREEN: '#4FAF49',
@@ -19,6 +22,18 @@ const defaultColors = {
   YELLOW: '#FFB900',
   TRANSPARENT45: 'rgba(0, 0, 0, 0.45)',
   RED: '#FF0000',
+  TEXT_PRIMARY: 'rgba(33, 33, 33, 1)',
+  TEXT_SECONDARY: 'rgba(117, 117, 117, 1)',
+  TEXT_TERTIARY: 'rgba(158, 158, 158, 1)',
+  TEXT_LINK: 'rgba(35, 105, 255, 1)',
+  TEXT_LINK_HOVER: 'rgba(77, 133, 255, 1)',
+  TEXT_LINK_CLICKED: 'rgba(33, 97, 235, 1)',
+  TEXT_ERROR: 'rgba(201, 73, 73, 1)',
+  TEXT_PENDING: 'rgba(230, 142, 0, 1)',
+  TEXT_SUCCESS: 'rgba(75, 163, 69, 1)',
+  TEXT_INVERSE_PRIMARY: 'rgba(255, 255, 255, 1)',
+  TEXT_INVERSE_SECONDARY: 'rgba(255, 255, 255, 0.7)',
+  TEXT_INVERSE_TERTIARY: 'rgba(255, 255, 255, 0.54)',
 }
 
 const defaultFontSizes = {
