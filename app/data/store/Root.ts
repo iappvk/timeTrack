@@ -35,7 +35,7 @@ const Root = types
       var today = new Date()
       while (noOfDays > itreation) {
         const tomorrow = new Date(today)
-        tomorrow.setDate(tomorrow.getDate() - itreation)
+        tomorrow.setDate(tomorrow.getDate() + itreation)
         const strDate = tomorrow.toISOString().slice(0, 10)
         // const numberOfSeconds = 1200000
         insertTask.push({
@@ -94,7 +94,7 @@ const Root = types
       const endDate = new Date()
 
       const startDate = new Date(endDate)
-      startDate.setDate(startDate.getDate() + days)
+      startDate.setDate(startDate.getDate() - days)
 
       const retDat = [...own.tasks].filter(
         (item: any) => item.id >= startDate.getTime() && item.id <= endDate.getTime(),
