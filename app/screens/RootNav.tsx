@@ -6,10 +6,12 @@ import { StatusBar } from 'react-native'
 import { Back } from '../components/Back'
 import { Icon } from '../components/Icon'
 import { ColorOptions } from '../components/theme/UiThemeProvider'
+import { Report } from './Report'
 import { Settings } from './Settings'
 import { Splash } from './Splash'
 import { TaskList } from './TaskList'
 import { AddTask } from './TaskList/AddTask'
+import { EditTask } from './TaskList/EditTask'
 import { Timer } from './Timer'
 const PRIMERY_COLOR = '#AA0023'
 const Stack = createNativeStackNavigator()
@@ -37,6 +39,8 @@ const ROUTES = {
   ProductList: 'ProductList',
   TABBAR: 'Tabbar',
   ADD_TASK: 'AddTask',
+  REPORT: 'Report',
+  EDIT_TASK: 'EditTask',
 }
 
 const TaskStack = () => {
@@ -156,6 +160,24 @@ const AppStack = () => {
             component={AddTask}
             options={{
               title: ROUTES.ADD_TASK,
+              headerShown: true,
+            }}
+          />
+
+          <Stack.Screen
+            name={ROUTES.EDIT_TASK}
+            component={EditTask}
+            options={{
+              title: ROUTES.EDIT_TASK,
+              headerShown: true,
+            }}
+          />
+
+          <Stack.Screen
+            name={ROUTES.REPORT}
+            component={Report}
+            options={{
+              title: ROUTES.REPORT,
               headerShown: true,
             }}
           />

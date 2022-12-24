@@ -28,7 +28,7 @@ const Splash = ({}: any) => {
         index: 0,
         routes: [{ name: ROUTES.HOME }],
       })
-    }, 10)
+    }, 1000)
   }, [navigation])
   return (
     <Box {...styles.container} padding={16}>

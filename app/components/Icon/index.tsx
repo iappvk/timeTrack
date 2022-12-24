@@ -49,6 +49,7 @@ export const IconIds = {
   MINUS: '\ue82a',
   PLUS_CIRCLE: '\ue829',
   MENU_VERTICAL: '\ue82c',
+  REPORT: '\ue82d',
 }
 
 export type IconOptions = keyof typeof IconIds

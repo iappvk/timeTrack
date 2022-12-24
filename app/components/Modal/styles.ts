@@ -51,40 +51,7 @@ const styles: any = (theme: any) => {
       justifyContent: 'center',
       marginLeft: 32,
     } as BoxProps,
-    TopMenu: {
-      contentContainer: {
-        flex: 1,
-        paddingRight: 16,
-        alignItem: 'flex-end',
-      } as BoxProps,
-      innerContainer: () =>
-        ({
-          backgroundColor: theme ? theme?.bodyBgColor : 'WHITE',
-          borderRadius: 16,
-          maxHeight: Dimensions.get('window').height,
-        } as BoxProps),
-      background: {
-        ...defaulBackground,
-      } as BoxProps,
-    },
 
-    Centered: {
-      contentContainer: {
-        flex: 1,
-        paddingHorizontal: 24,
-        paddingVertical: 96,
-        justifyContent: 'center',
-      } as BoxProps,
-      innerContainer: () =>
-        ({
-          backgroundColor: theme ? theme?.bodyBgColor : 'WHITE',
-          borderRadius: 16,
-          maxHeight: Dimensions.get('window').height,
-        } as BoxProps),
-      background: {
-        ...defaulBackground,
-      } as BoxProps,
-    },
     Bottom: {
       contentContainer: {
         flex: 1,
@@ -112,58 +79,6 @@ const styles: any = (theme: any) => {
         color: theme ? (theme?.headingText as ColorOptions) : 'BLACK_21',
       } as TextProps,
     },
-    CenteredWrap: {
-      contentContainer: {
-        flex: 1,
-        paddingHorizontal: 24,
-        paddingVertical: 96,
-        justifyContent: 'center',
-      } as BoxProps,
-      innerContainer: () =>
-        ({
-          backgroundColor: 'WHITE',
-          alignSelf: 'center',
-          borderRadius: 16,
-          maxHeight: Dimensions.get('window').height - 50,
-        } as BoxProps),
-      background: {
-        ...defaulBackground,
-      } as BoxProps,
-    },
-    CenteredWrapBottom: {
-      contentContainer: {
-        flex: 1,
-        paddingTop: 200,
-        justifyContent: 'flex-end',
-      } as ViewStyle,
-      innerContainer: () =>
-        ({
-          backgroundColor: 'WHITE',
-          alignSelf: 'center',
-          borderRadius: 16,
-          maxHeight: Dimensions.get('window').height - 50,
-        } as BoxProps),
-      background: {
-        ...defaulBackground,
-        bottom: 40,
-      } as BoxProps,
-    },
-    Right: {
-      contentContainer: {
-        flex: 1,
-        justifyContent: 'center',
-      } as BoxProps,
-      innerContainer: () =>
-        ({
-          backgroundColor: 'WHITE',
-          alignSelf: 'flex-end',
-          borderRadius: 16,
-          maxHeight: Dimensions.get('window').height,
-        } as BoxProps),
-      background: {
-        ...defaulBackground,
-      } as BoxProps,
-    },
     Default: {
       containerHeader: {
         ...defaultHeader,
@@ -174,16 +89,6 @@ const styles: any = (theme: any) => {
         fontSize: 16,
         // fontWeight: 'BOLD',
         color: theme ? (theme?.headingText as ColorOptions) : 'TEXT_PRIMARY',
-      } as TextProps,
-    },
-    White_Bg: {
-      containerHeader: {
-        ...defaultHeader,
-        backgroundColor: theme ? (theme?.brandColor as ColorOptions) : 'WHITE',
-      } as BoxProps,
-      headerTitle: {
-        ...defaultHeaderTitle,
-        color: theme ? (theme?.headingText as ColorOptions) : 'BLACK_75',
       } as TextProps,
     },
   }

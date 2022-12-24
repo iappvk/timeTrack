@@ -34,6 +34,8 @@ const defaultColors = {
   TEXT_INVERSE_PRIMARY: 'rgba(255, 255, 255, 1)',
   TEXT_INVERSE_SECONDARY: 'rgba(255, 255, 255, 0.7)',
   TEXT_INVERSE_TERTIARY: 'rgba(255, 255, 255, 0.54)',
+  MODAL_BG: '#000000bb',
+  MODAL_UNDERLAY: '#000000cc',
 }
 
 const defaultFontSizes = {

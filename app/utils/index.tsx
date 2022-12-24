@@ -114,4 +114,48 @@ export const getStoreData = async (key: string) => {
   }
 }
 
-export { CUSTOM_FONT, STORE_KEY_ALL_TASK }
+const getFormattedTime = (duration: any) => {
+  var seconds: any = Math.floor((duration / 1000) % 60),
+    minutes: any = Math.floor((duration / (1000 * 60)) % 60),
+    hours: any = Math.floor((duration / (1000 * 60 * 60)) % 24)
+
+  // hours = hours < 10 ? '0' + hours : hours
+  // minutes = minutes < 10 ? '0' + minutes : minutes
+  // seconds = seconds < 10 ? '0' + seconds : seconds
+
+  if (hours > 0) {
+    if (minutes > 0) {
+      return hours + 'h ' + minutes + 'm'
+    }
+    return hours + 'h '
+  }
+
+  if (minutes > 0) {
+    return minutes + 'm'
+  }
+
+  return hours + 'h ' + minutes + 'm' + seconds + 's'
+}
+
+const getFormattedTime1 = (duration: any) => {
+  var seconds: any = Math.floor((duration / 1000) % 60),
+    minutes: any = Math.floor((duration / (1000 * 60)) % 60),
+    hours: any = Math.floor((duration / (1000 * 60 * 60)) % 24)
+
+  hours = hours < 10 ? '0' + hours : hours
+  minutes = minutes < 10 ? '0' + minutes : minutes
+  seconds = seconds < 10 ? '0' + seconds : seconds
+
+  return hours + ':' + minutes + ':' + seconds
+}
+
+const getRandomColor = () => {
+  let maxVal = 0xffffff // 16777215
+  let randomNumber = Math.random() * maxVal
+  randomNumber = Math.floor(randomNumber)
+  const retData = randomNumber.toString(16)
+  console.log(' The colour : ' + retData)
+  return `#${retData}`
+}
+
+export { CUSTOM_FONT, STORE_KEY_ALL_TASK, getFormattedTime, getFormattedTime1, getRandomColor }

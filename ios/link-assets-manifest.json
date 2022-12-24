@@ -43,23 +43,23 @@
     },
     {
       "path": "app/assets/fonts/timer.eot",
-      "sha1": "1ab6a2bab75ad55c5b35cc904b51480ea6f198f4"
+      "sha1": "74d01ecb03ccd3086cc0031c355dc071ff0cac52"
     },
     {
       "path": "app/assets/fonts/timer.svg",
-      "sha1": "c64e6a4c4f2e7b723a9200d027d7ee4eb2a7a984"
+      "sha1": "5158fdfc328d22044140ad4ec37408ef6cc9662b"
     },
     {
       "path": "app/assets/fonts/timer.ttf",
-      "sha1": "39121cc8afc6d3d2cb821b39c31dcbc6dc209e25"
+      "sha1": "de00fd2cb26a42dfa071966fe8aca4840a53fec2"
     },
     {
       "path": "app/assets/fonts/timer.woff",
-      "sha1": "85128b3615673537d8c6ec56e6fb518a74f5b0ab"
+      "sha1": "b31b464ec51269e92d577e885c93995fb1757928"
     },
     {
       "path": "app/assets/fonts/timer.woff2",
-      "sha1": "48e3b660085b635c851761cf6b2fe889e9b14b6c"
+      "sha1": "17a061ad8a7ffbe576dbb4668739784ab318628d"
     }
   ]
 }

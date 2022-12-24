@@ -44,7 +44,7 @@ const Timer = ({}: any) => {
   const closeAlert = () => {
     Alert.alert(
       'Close screen!',
-      'Are you sure, do you want close withour save this session?',
+      'Are you sure, do you want close without save this session?',
       [
         {
           text: 'Yes',
@@ -63,12 +63,12 @@ const Timer = ({}: any) => {
 
   const closeWithSaveAlert = () => {
     Alert.alert(
-      'Ebd Timer',
-      '',
+      'End Timer!',
+      'Do you want to save?',
       [
         { text: 'Cancel', onPress: () => console.log('Yes button clicked'), style: 'destructive' },
         {
-          text: 'End',
+          text: 'Save',
           onPress: () => {
             updateTask(currentTime, currentMsec)
             clearData()

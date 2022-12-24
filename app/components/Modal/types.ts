@@ -2,11 +2,6 @@ import { ReactElement } from 'react'
 
 export const ModalTypes = {
   Bottom: 'Bottom',
-  Centered: 'Centered',
-  CenteredWrap: 'CenteredWrap',
-  TopMenu: 'TopMenu',
-  Right: 'Right',
-  CenteredWrapBottom: 'CenteredWrapBottom',
 }
 
 export const ModalHeaderTypes = {

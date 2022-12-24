@@ -1,31 +1,41 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useLayoutEffect, useState } from 'react'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { Box } from '../../components/Box'
 import { Icon } from '../../components/Icon'
 import { Spacer } from '../../components/Spacer'
 import { Text } from '../../components/Text'
 import { useStores } from '../../data/store'
-import { CUSTOM_FONT } from '../../utils'
+import { CUSTOM_FONT, getFormattedTime1 } from '../../utils'
 import { ROUTES } from '../RootNav'
 const TaskList = ({}: any) => {
   const navigation = useNavigation()
-  const { getTaskList, updateTxn } = useStores((root) => ({
+  const { getTaskList, updateTxn, clearData } = useStores((root) => ({
     getTaskList: root.getTaskList,
     length: root.tasks.length,
     updateTxn: root.transaction.updateTxn,
+    clearData: root.transaction.clearData,
   }))
 
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [disableOtherDate, setDisableOtherDate] = useState(false)
 
-  const listData = getTaskList(selectedDate)
+  let listData = getTaskList(selectedDate)
+
+  const isFocused = useIsFocused()
+
+  useEffect(() => {
+    if (isFocused) {
+      listData = getTaskList(selectedDate)
+    }
+  }, [isFocused])
 
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Task Tracker',
       headerLeft: () => (
         <Box
+          padding={8}
           underlayColor="TRANSPARENT"
           onPress={() => {
             navigation.navigate(ROUTES.SETTING as never)
@@ -35,11 +45,12 @@ const TaskList = ({}: any) => {
       ),
       headerRight: () => (
         <Box
+          padding={8}
           underlayColor="TRANSPARENT"
           onPress={() => {
-            navigation.navigate(ROUTES.ADD_TASK as never)
+            navigation.navigate(ROUTES.REPORT as never)
           }}>
-          <Icon id="PLUS_CIRCLE" size={22} color="WHITE" />
+          <Icon id="REPORT" size={22} color="WHITE" />
         </Box>
       ),
     })
@@ -87,16 +98,27 @@ const TaskList = ({}: any) => {
               <Icon id={item.icon} size={16} color="WHITE" />
             </Box>
             <Spacer direction="horizontal" size={16} />
-            <Text value={item.name} fontSize={16} color="BRAND_PRIMARY_ACTION" />
+            <Text value={item.name} fontSize={16} fontWeight="600" color="TEXT_PRIMARY" />
           </Box>
-          <Box borderRadius={15} width={30} height={30} justifyContent="center" alignItems="center">
-            <Icon id="MENU_VERTICAL" size={16} color="BLACK" />
+          <Box
+            borderRadius={15}
+            width={30}
+            height={30}
+            justifyContent="center"
+            alignItems="center"
+            underlayColor="TRANSPARENT45"
+            onPress={() => {
+              clearData()
+              updateTxn({ ...item })
+              navigation.navigate(ROUTES.EDIT_TASK as never)
+            }}>
+            <Icon id="EDIT" size={22} color="BLACK" />
           </Box>
         </Box>
         <Box height={1} bg="GREY_SEPARATOR" />
         <Box
           flexDirection="row"
-          padding={8}
+          padding={16}
           alignItems="center"
           justifyContent="center"
           underlayColor="TRANSPARENT"
@@ -105,9 +127,13 @@ const TaskList = ({}: any) => {
             updateTxn({ ...item })
             navigation.navigate(ROUTES.TIMER as never)
           }}>
-          <Text value={item.numberOfSeconds > 0 ? item.timeString : 'Start'} />
+          <Text
+            value={item.numberOfSeconds > 0 ? getFormattedTime1(item.numberOfSeconds) : 'Start'}
+            fontSize={18}
+            fontWeight="700"
+          />
           <Spacer direction="horizontal" size={8} />
-          <Icon id="ARROW_CIRCLE_RIGHT" color="BLACK" />
+          <Icon id="ARROW_CIRCLE_RIGHT" size={22} color="BLACK" />
         </Box>
       </Box>
     )

@@ -8,82 +8,31 @@ import { Spacer } from '../../components/Spacer'
 import { Text } from '../../components/Text'
 import { ColorOptions } from '../../components/theme/UiThemeProvider'
 import { useStores } from '../../data/store'
+import { ColorsArray } from './AddTask'
 
-const ColorsArray = [
-  '#D49CFF',
-  '#553e66',
-  '#eed7ff',
-  '#7bbfff',
-  '#314c66',
-  '#cae5ff',
-  '#ffc176',
-  '#664d2f',
-  '#ffe0bb',
-  '#ff9494',
-  '#a75a55',
-  '#ffcaca',
-  '#FF6633',
-  '#FFB399',
-  '#FF33FF',
-  '#FFFF99',
-  '#00B3E6',
-  '#E6B333',
-  '#3366E6',
-  '#999966',
-  '#99FF99',
-  '#B34D4D',
-  '#80B300',
-  '#809900',
-  '#E6B3B3',
-  '#6680B3',
-  '#66991A',
-  '#FF99E6',
-  '#CCFF1A',
-  '#FF1A66',
-  '#E6331A',
-  '#33FFCC',
-  '#66994D',
-  '#B366CC',
-  '#4D8000',
-  '#B33300',
-  '#CC80CC',
-  '#66664D',
-  '#991AFF',
-  '#E666FF',
-  '#4DB3FF',
-  '#1AB399',
-  '#E666B3',
-  '#33991A',
-  '#CC9999',
-  '#B3B31A',
-  '#00E680',
-  '#4D8066',
-  '#809980',
-  '#E6FF80',
-  '#1AFF33',
-  '#999933',
-  '#FF3380',
-  '#CCCC00',
-  '#66E64D',
-  '#4D80CC',
-  '#9900B3',
-  '#E64D66',
-  '#4DB380',
-  '#FF4D4D',
-  '#99E6E6',
-  '#6666FF',
-]
-
-const AddTask = ({}: any) => {
-  const { addTask } = useStores((root) => ({
-    addTask: root.addTask,
+const EditTask = ({}: any) => {
+  const { updateTaskDetails, transaction } = useStores((root) => ({
+    updateTaskDetails: root.updateTaskDetails,
+    transaction: root.transaction,
   }))
 
   const navigation = useNavigation()
-  const [taskName, setTaskName] = useState('')
+  const [taskName, setTaskName] = useState(transaction?.name ?? '')
+  const [tags, setTags] = useState(transaction?.tags ?? '')
+
+  const numberOfSeconds = transaction?.numberOfSeconds ?? 0
+
+  const seconds: any = Math.floor((numberOfSeconds / 1000) % 60)
+  const minutes: any = Math.floor((numberOfSeconds / (1000 * 60)) % 60)
+  const hours: any = Math.floor((numberOfSeconds / (1000 * 60 * 60)) % 24)
+
+  const [hoursInput, setHoursInput] = useState(`${hours > 0 ? hours : ''}`)
+  const [minutesInput, setMinutesInput] = useState(`${minutes > 0 ? minutes : ''}` ?? '')
+  const [secondsInput, setSecondsInput] = useState(`${seconds > 0 ? seconds : ''}` ?? '')
+
   const [noOfDays, setNoOfDays] = useState(1)
-  const [iconColor, setIconColor] = useState('#D49CFF')
-  const [taskIcon, setTaskIcon] = useState('SMILE')
+  const [iconColor, setIconColor] = useState(transaction?.color ?? '#D49CFF')
+  const [taskIcon, setTaskIcon] = useState(transaction?.icon ?? 'SMILE')
   const [showModal, setShowModal] = useState(false)
 
   const renderColor = ({ item }: any) => {
@@ -100,7 +49,15 @@ const AddTask = ({}: any) => {
         }}></Box>
     )
   }
-
+  const timeString2ms = (a: any) => {
+    let b
+    return (
+      (a = a.split('.')),
+      (b = a[1] * 1 || 0),
+      (a = a[0].split(':')),
+      b + (a[2] ? a[0] * 3600 + a[1] * 60 + a[2] * 1 : a[1] ? a[0] * 60 + a[1] * 1 : a[0] * 1) * 1e3
+    )
+  }
   const renderItem = ({ item }: any) => {
     return (
       <Box
@@ -140,59 +97,74 @@ const AddTask = ({}: any) => {
           </Box>
           <Spacer direction="vertical" size={8} />
           <Text value="Choose Icon" color="TEXT_PRIMARY" fontSize={16} />
-          <Spacer direction="vertical" size={32} />
+          <Spacer direction="vertical" size={16} />
+          <Text value={transaction?.date} color="TEXT_PRIMARY" fontSize={18} fontWeight="900" />
         </Box>
+        <Text color="TEXT_PRIMARY" value="Task Name" fontSize={14} />
+        <Spacer direction="vertical" size={8} />
         <TextInput
+          placeholderTextColor="#959595"
           placeholder="Task Name"
           returnKeyType="done"
           onChangeText={setTaskName}
           value={taskName}
           style={styles.input}
-          placeholderTextColor="#959595"
         />
-        <Spacer direction="vertical" size={32} />
-        <Box padding={16} borderRadius={8} backgroundColor="WHITE">
-          <Box flexDirection="row" justifyContent="space-between" alignItems="center">
-            <Box flex={1}>
-              <Text
-                numberOfLines={2}
-                color="TEXT_PRIMARY"
-                value="No of days repeat from today?"
-                fontSize={16}
-                fontWeight="600"
-              />
-            </Box>
-            <Spacer direction="horizontal" size={16} />
-            <Box flexDirection="row" borderRadius={8} width={110} overflow="hidden" bg="BORDER_COLOR">
-              <Box
-                {...styles.iconBox}
-                onPress={() => {
-                  if (noOfDays !== 1) {
-                    setNoOfDays(noOfDays - 1)
-                  }
-                }}>
-                <Icon id="MINUS" color="WHITE" size={16} />
-              </Box>
-              <Box padding={8} flex={1}>
-                <Text
-                  value={`${noOfDays}`}
-                  textAlign="center"
-                  fontSize={18}
-                  fontWeight="900"
-                  color="BRAND_PRIMARY_BG"
-                />
-              </Box>
-              <Box
-                {...styles.iconBox}
-                onPress={() => {
-                  setNoOfDays(noOfDays + 1)
-                }}>
-                <Icon id="PLUS" color="WHITE" size={16} />
-              </Box>
-            </Box>
+        <Spacer direction="vertical" size={16} />
+        <Text color="TEXT_PRIMARY" value="Add Tags" fontSize={14} />
+        <Spacer direction="vertical" size={8} />
+        <TextInput
+          placeholderTextColor="#959595"
+          placeholder="Tags separated by comma"
+          returnKeyType="done"
+          onChangeText={setTags}
+          value={tags}
+          style={styles.input}
+        />
+        <Spacer direction="vertical" size={16} />
+        <Box flexDirection="row">
+          <Box flex={1}>
+            <Text color="TEXT_PRIMARY" value="Hours" fontSize={14} />
+            <Spacer direction="vertical" size={8} />
+            <TextInput
+              placeholderTextColor="#959595"
+              placeholder="Hours"
+              keyboardType="number-pad"
+              returnKeyType="done"
+              onChangeText={setHoursInput}
+              value={hoursInput}
+              style={styles.input}
+            />
+          </Box>
+          <Spacer direction="horizontal" size={8} />
+          <Box flex={1}>
+            <Text color="TEXT_PRIMARY" value="Minutes" fontSize={14} />
+            <Spacer direction="vertical" size={8} />
+            <TextInput
+              placeholderTextColor="#959595"
+              placeholder="Minutes"
+              keyboardType="number-pad"
+              returnKeyType="done"
+              onChangeText={setMinutesInput}
+              value={minutesInput}
+              style={styles.input}
+            />
+          </Box>
+          <Spacer direction="horizontal" size={8} />
+          <Box flex={1}>
+            <Text color="TEXT_PRIMARY" value="Seconds" fontSize={14} />
+            <Spacer direction="vertical" size={8} />
+            <TextInput
+              placeholderTextColor="#959595"
+              placeholder="Seconds"
+              keyboardType="number-pad"
+              returnKeyType="done"
+              onChangeText={setSecondsInput}
+              value={secondsInput}
+              style={styles.input}
+            />
           </Box>
         </Box>
-
         <Spacer direction="vertical" size={32} />
         <Box
           bg={'BRAND_PRIMARY_BG'}
@@ -202,17 +174,28 @@ const AddTask = ({}: any) => {
           disabled={taskName === ''}
           underlayColor="TRANSPARENT45"
           onPress={() => {
-            addTask({ name: taskName, noOfDays, icon: taskIcon, color: iconColor })
+            const timeString = `${hoursInput === '' ? '00' : hoursInput}:${minutesInput === '' ? '00' : minutesInput}:${
+              secondsInput === '' ? '00' : secondsInput
+            }`
+
+            console.log(timeString + ' THe tikeString' + timeString2ms(timeString))
+            updateTaskDetails({
+              timeString,
+              numberOfSeconds: timeString2ms(timeString),
+              noOfDays,
+              icon: taskIcon,
+              color: iconColor,
+              tags,
+            })
             navigation.goBack()
           }}>
-          <Text value="CREATE" textAlign="center" fontSize={16} fontWeight="900" color="WHITE" />
+          <Text value="UPDATE" textAlign="center" fontSize={16} fontWeight="900" color="WHITE" />
         </Box>
         <ModalDialog
           type="Bottom"
           show={showModal}
           title="Choose Icon & Color"
           isFullWidth={true}
-          // headerType={'White_Bg'}
           onDismiss={() => {
             setShowModal(false)
           }}>
@@ -260,4 +243,4 @@ const styles = {
   } as BoxProps,
 }
 
-export { AddTask, ColorsArray }
+export { EditTask }
