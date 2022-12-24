@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Box } from '../../components/Box'
 import { Icon } from '../../components/Icon'
@@ -10,6 +11,7 @@ const Settings = ({}: any) => {
   const { clearData } = useStores((root) => ({
     clearData: root.clearData,
   }))
+  const navigation = useNavigation()
 
   return (
     <Box safeArea flex={1} justifyContent="center" alignItems="center">
@@ -25,6 +27,7 @@ const Settings = ({}: any) => {
         onPress={async () => {
           AsyncStorage.clear()
           clearData()
+          navigation.goBack()
         }}>
         <Icon id="DELETE" size={22} color="WHITE" />
         <Spacer direction="horizontal" size={8} />

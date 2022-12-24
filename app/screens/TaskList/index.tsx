@@ -1,28 +1,26 @@
 import { useIsFocused, useNavigation } from '@react-navigation/native'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { FlatList } from 'react-native'
-import { Box } from '../../components/Box'
+import { Box, BoxProps } from '../../components/Box'
 import { Icon } from '../../components/Icon'
 import { Spacer } from '../../components/Spacer'
-import { Text } from '../../components/Text'
+import { Text, TextProps } from '../../components/Text'
 import { useStores } from '../../data/store'
 import { CUSTOM_FONT, getFormattedTime1 } from '../../utils'
 import { ROUTES } from '../RootNav'
 const TaskList = ({}: any) => {
-  const navigation = useNavigation()
   const { getTaskList, updateTxn, clearData } = useStores((root) => ({
     getTaskList: root.getTaskList,
     length: root.tasks.length,
     updateTxn: root.transaction.updateTxn,
     clearData: root.transaction.clearData,
   }))
+  const navigation = useNavigation()
 
   const [selectedDate, setSelectedDate] = useState(new Date())
-  const [disableOtherDate, setDisableOtherDate] = useState(false)
+  const isFocused = useIsFocused()
 
   let listData = getTaskList(selectedDate)
-
-  const isFocused = useIsFocused()
 
   useEffect(() => {
     if (isFocused) {
@@ -101,12 +99,7 @@ const TaskList = ({}: any) => {
             <Text value={item.name} fontSize={16} fontWeight="600" color="TEXT_PRIMARY" />
           </Box>
           <Box
-            borderRadius={15}
-            width={30}
-            height={30}
-            justifyContent="center"
-            alignItems="center"
-            underlayColor="TRANSPARENT45"
+            {...style.editBox}
             onPress={() => {
               clearData()
               updateTxn({ ...item })
@@ -117,20 +110,14 @@ const TaskList = ({}: any) => {
         </Box>
         <Box height={1} bg="GREY_SEPARATOR" />
         <Box
-          flexDirection="row"
-          padding={16}
-          alignItems="center"
-          justifyContent="center"
-          underlayColor="TRANSPARENT"
-          // disabled={disableOtherDate}
+          {...style.timerBox}
           onPress={() => {
             updateTxn({ ...item })
             navigation.navigate(ROUTES.TIMER as never)
           }}>
           <Text
+            {...style.timerTxt}
             value={item.numberOfSeconds > 0 ? getFormattedTime1(item.numberOfSeconds) : 'Start'}
-            fontSize={18}
-            fontWeight="700"
           />
           <Spacer direction="horizontal" size={8} />
           <Icon id="ARROW_CIRCLE_RIGHT" size={22} color="BLACK" />
@@ -149,34 +136,21 @@ const TaskList = ({}: any) => {
   }
   return (
     <Box safeArea flex={1}>
-      <Box height={50} flexDirection="row" bg="BRAND_PRIMARY_BG" alignItems="center" paddingHorizontal={16}>
+      <Box {...style.dateNav}>
         <Box
-          width={30}
-          height={50}
-          alignItems="center"
-          justifyContent="center"
-          underlayColor="TRANSPARENT45"
+          {...style.arrowBox}
           onPress={() => {
             const yesterDay = new Date(selectedDate)
             yesterDay.setDate(yesterDay.getDate() - 1)
-            var today = new Date()
-
-            var diffDays = today.getDate() - yesterDay.getDate()
-            setDisableOtherDate(diffDays !== 0)
-
             setSelectedDate(yesterDay)
           }}>
           <Icon id="ARROW_LEFT" size={16} color="WHITE" />
         </Box>
         <Box flex={1}>
-          <Text textAlign="center" value={dateString()} color="WHITE" fontSize={16} fontWeight="800" />
+          <Text value={dateString()} {...style.dateTitle} />
         </Box>
         <Box
-          width={30}
-          height={50}
-          alignItems="center"
-          justifyContent="center"
-          underlayColor="TRANSPARENT45"
+          {...style.arrowBox}
           onPress={() => {
             const tommorow = new Date(selectedDate)
             tommorow.setDate(tommorow.getDate() + 1)
@@ -187,7 +161,7 @@ const TaskList = ({}: any) => {
       </Box>
       <FlatList
         contentContainerStyle={{ flex: 1, margin: 16 }}
-        keyExtractor={(item: any, index: number) => `profileTab_${item.id}_${index}`}
+        keyExtractor={(item: any, index: number) => `taskList_${item.id}_${index}`}
         ListEmptyComponent={renderEmpty}
         data={listData}
         renderItem={renderItem}
@@ -195,24 +169,69 @@ const TaskList = ({}: any) => {
       />
       {listData.length !== 0 && (
         <Box
-          margin={16}
-          bg={'BRAND_PRIMARY_BG'}
-          flexDirection="row"
-          borderRadius={8}
-          padding={16}
-          justifyContent="center"
-          alignContent="center"
-          underlayColor="TRANSPARENT45"
+          {...style.newBtn}
           onPress={() => {
             navigation.navigate(ROUTES.ADD_TASK as never)
           }}>
           <Icon id="PLUS" size={16} color="WHITE" />
           <Spacer direction="horizontal" size={8} />
-          <Text value="New Task " color="WHITE" fontWeight="800" />
+          <Text value="New Task " {...style.btnText} />
         </Box>
       )}
     </Box>
   )
 }
 
+const style = {
+  dateNav: {
+    height: 50,
+    flexDirection: 'row',
+    bg: 'BRAND_PRIMARY_BG',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+  } as BoxProps,
+  arrowBox: {
+    width: 30,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    underlayColor: 'TRANSPARENT45',
+  } as BoxProps,
+  dateTitle: {
+    textAlign: 'center',
+    color: 'WHITE',
+    fontSize: 16,
+    fontWeight: '800',
+  } as TextProps,
+  newBtn: {
+    margin: 16,
+    bg: 'BRAND_PRIMARY_BG',
+    flexDirection: 'row',
+    borderRadius: 8,
+    padding: 16,
+    justifyContent: 'center',
+    alignContent: 'center',
+    underlayColor: 'TRANSPARENT45',
+  } as BoxProps,
+  btnText: {
+    color: 'WHITE',
+    fontWeight: '800',
+  } as TextProps,
+  editBox: {
+    borderRadius: 15,
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    underlayColor: 'TRANSPARENT45',
+  } as BoxProps,
+  timerBox: {
+    flexDirection: 'row',
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    underlayColor: 'TRANSPARENT',
+  } as BoxProps,
+  timerTxt: { color: 'TEXT_PRIMARY', fontSize: 18, fontWeight: '700' } as TextProps,
+}
 export { TaskList }

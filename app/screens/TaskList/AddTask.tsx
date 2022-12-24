@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { FlatList, TextInput } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Box, BoxProps } from '../../components/Box'
 import { Icon, IconIdsOptionArray } from '../../components/Icon'
 import { ModalDialog } from '../../components/Modal'
@@ -123,122 +124,127 @@ const AddTask = ({}: any) => {
   }
   return (
     <>
-      <Box flex={1} margin={16}>
-        <Box justifyContent="center" alignItems="center">
-          <Box
-            borderRadius={30}
-            width={60}
-            height={60}
-            justifyContent="center"
-            alignItems="center"
-            backgroundColor={iconColor as ColorOptions}
-            underlayColor="TRANSPARENT45"
-            onPress={() => {
-              setShowModal(true)
-            }}>
-            <Icon id={taskIcon ?? 'BALL'} size={30} color="WHITE" />
-          </Box>
-          <Spacer direction="vertical" size={8} />
-          <Text value="Choose Icon" color="TEXT_PRIMARY" fontSize={16} />
-          <Spacer direction="vertical" size={32} />
-        </Box>
-        <TextInput
-          placeholder="Task Name"
-          returnKeyType="done"
-          onChangeText={setTaskName}
-          value={taskName}
-          style={styles.input}
-          placeholderTextColor="#959595"
-        />
-        <Spacer direction="vertical" size={32} />
-        <Box padding={16} borderRadius={8} backgroundColor="WHITE">
-          <Box flexDirection="row" justifyContent="space-between" alignItems="center">
-            <Box flex={1}>
-              <Text
-                numberOfLines={2}
-                color="TEXT_PRIMARY"
-                value="No of days repeat from today?"
-                fontSize={16}
-                fontWeight="600"
-              />
+      <KeyboardAwareScrollView
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+        enableOnAndroid={true}
+        keyboardShouldPersistTaps="handled">
+        <Box flex={1} margin={16}>
+          <Box justifyContent="center" alignItems="center">
+            <Box
+              borderRadius={30}
+              width={60}
+              height={60}
+              justifyContent="center"
+              alignItems="center"
+              backgroundColor={iconColor as ColorOptions}
+              underlayColor="TRANSPARENT45"
+              onPress={() => {
+                setShowModal(true)
+              }}>
+              <Icon id={taskIcon ?? 'BALL'} size={30} color="WHITE" />
             </Box>
-            <Spacer direction="horizontal" size={16} />
-            <Box flexDirection="row" borderRadius={8} width={110} overflow="hidden" bg="BORDER_COLOR">
-              <Box
-                {...styles.iconBox}
-                onPress={() => {
-                  if (noOfDays !== 1) {
-                    setNoOfDays(noOfDays - 1)
-                  }
-                }}>
-                <Icon id="MINUS" color="WHITE" size={16} />
-              </Box>
-              <Box padding={8} flex={1}>
+            <Spacer direction="vertical" size={8} />
+            <Text value="Choose Icon" color="TEXT_PRIMARY" fontSize={16} />
+            <Spacer direction="vertical" size={32} />
+          </Box>
+          <TextInput
+            placeholder="Task Name"
+            returnKeyType="done"
+            onChangeText={setTaskName}
+            value={taskName}
+            style={styles.input}
+            placeholderTextColor="#959595"
+          />
+          <Spacer direction="vertical" size={32} />
+          <Box padding={16} borderRadius={8} backgroundColor="WHITE">
+            <Box flexDirection="row" justifyContent="space-between" alignItems="center">
+              <Box flex={1}>
                 <Text
-                  value={`${noOfDays}`}
-                  textAlign="center"
-                  fontSize={18}
-                  fontWeight="900"
-                  color="BRAND_PRIMARY_BG"
+                  numberOfLines={2}
+                  color="TEXT_PRIMARY"
+                  value="No of days repeat from today?"
+                  fontSize={16}
+                  fontWeight="600"
                 />
               </Box>
-              <Box
-                {...styles.iconBox}
-                onPress={() => {
-                  setNoOfDays(noOfDays + 1)
-                }}>
-                <Icon id="PLUS" color="WHITE" size={16} />
+              <Spacer direction="horizontal" size={16} />
+              <Box flexDirection="row" borderRadius={8} width={110} overflow="hidden" bg="BORDER_COLOR">
+                <Box
+                  {...styles.iconBox}
+                  onPress={() => {
+                    if (noOfDays !== 1) {
+                      setNoOfDays(noOfDays - 1)
+                    }
+                  }}>
+                  <Icon id="MINUS" color="WHITE" size={16} />
+                </Box>
+                <Box padding={8} flex={1}>
+                  <Text
+                    value={`${noOfDays}`}
+                    textAlign="center"
+                    fontSize={18}
+                    fontWeight="900"
+                    color="BRAND_PRIMARY_BG"
+                  />
+                </Box>
+                <Box
+                  {...styles.iconBox}
+                  onPress={() => {
+                    setNoOfDays(noOfDays + 1)
+                  }}>
+                  <Icon id="PLUS" color="WHITE" size={16} />
+                </Box>
               </Box>
             </Box>
           </Box>
-        </Box>
 
-        <Spacer direction="vertical" size={32} />
-        <Box
-          bg={'BRAND_PRIMARY_BG'}
-          opacity={taskName === '' ? 0.3 : 1}
-          borderRadius={8}
-          padding={16}
-          disabled={taskName === ''}
-          underlayColor="TRANSPARENT45"
-          onPress={() => {
-            addTask({ name: taskName, noOfDays, icon: taskIcon, color: iconColor })
-            navigation.goBack()
-          }}>
-          <Text value="CREATE" textAlign="center" fontSize={16} fontWeight="900" color="WHITE" />
-        </Box>
-        <ModalDialog
-          type="Bottom"
-          show={showModal}
-          title="Choose Icon & Color"
-          isFullWidth={true}
-          // headerType={'White_Bg'}
-          onDismiss={() => {
-            setShowModal(false)
-          }}>
-          <Box padding={16} minHeight={130} bg="WHITE">
-            <Box paddingLeft={16}>
-              <FlatList
-                keyExtractor={(item: any, index: number) => `color_${index}`}
-                data={ColorsArray}
-                horizontal
-                renderItem={renderColor}
-                ItemSeparatorComponent={() => <Spacer direction="horizontal" size={16} />}
-              />
-            </Box>
-            <Spacer direction="vertical" size={32} />
-            <Box maxHeight={300}>
-              <FlatList
-                keyExtractor={(item: any, index: number) => `icon__${index}`}
-                data={[...IconIdsOptionArray]}
-                numColumns={3}
-                renderItem={renderItem}
-                ItemSeparatorComponent={() => <Spacer direction="horizontal" size={16} />}
-              />
-            </Box>
+          <Spacer direction="vertical" size={32} />
+          <Box
+            bg={'BRAND_PRIMARY_BG'}
+            opacity={taskName === '' ? 0.3 : 1}
+            borderRadius={8}
+            padding={16}
+            disabled={taskName === ''}
+            underlayColor="TRANSPARENT45"
+            onPress={() => {
+              addTask({ name: taskName, noOfDays, icon: taskIcon, color: iconColor })
+              navigation.goBack()
+            }}>
+            <Text value="CREATE" textAlign="center" fontSize={16} fontWeight="900" color="WHITE" />
           </Box>
-        </ModalDialog>
-      </Box>
+        </Box>
+      </KeyboardAwareScrollView>
+      <ModalDialog
+        type="Bottom"
+        show={showModal}
+        title="Choose Icon & Color"
+        isFullWidth={true}
+        // headerType={'White_Bg'}
+        onDismiss={() => {
+          setShowModal(false)
+        }}>
+        <Box padding={16} minHeight={130} bg="WHITE">
+          <Box paddingLeft={16}>
+            <FlatList
+              keyExtractor={(item: any, index: number) => `color_${index}`}
+              data={ColorsArray}
+              horizontal
+              renderItem={renderColor}
+              ItemSeparatorComponent={() => <Spacer direction="horizontal" size={16} />}
+            />
+          </Box>
+          <Spacer direction="vertical" size={32} />
+          <Box maxHeight={300}>
+            <FlatList
+              keyExtractor={(item: any, index: number) => `icon__${index}`}
+              data={[...IconIdsOptionArray]}
+              numColumns={3}
+              renderItem={renderItem}
+              ItemSeparatorComponent={() => <Spacer direction="horizontal" size={16} />}
+            />
+          </Box>
+        </Box>
+      </ModalDialog>
     </>
   )
 }

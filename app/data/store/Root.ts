@@ -94,7 +94,7 @@ const Root = types
       const endDate = new Date()
 
       const startDate = new Date(endDate)
-      startDate.setDate(startDate.getDate() - days)
+      startDate.setDate(startDate.getDate() + days)
 
       const retDat = [...own.tasks].filter(
         (item: any) => item.id >= startDate.getTime() && item.id <= endDate.getTime(),

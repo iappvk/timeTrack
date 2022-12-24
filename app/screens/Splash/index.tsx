@@ -11,13 +11,13 @@ import { ROUTES } from '../RootNav'
 import { styles } from './styles'
 const Splash = ({}: any) => {
   const navigation = useNavigation()
+
   const { addTaskFromAsync } = useStores((root) => ({
     addTaskFromAsync: root.addTaskFromAsync,
   }))
 
   const getData = useCallback(async () => {
     const taskList = (await getStoreData(STORE_KEY_ALL_TASK)) as any
-    console.log(STORE_KEY_ALL_TASK + ' The keyts ' + JSON.stringify(taskList))
     addTaskFromAsync(taskList)
   }, [])
 
@@ -26,7 +26,7 @@ const Splash = ({}: any) => {
     setTimeout(() => {
       navigation.reset({
         index: 0,
-        routes: [{ name: ROUTES.HOME }],
+        routes: [{ name: ROUTES.HOME as never }],
       })
     }, 1000)
   }, [navigation])
