@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
 import { ThemeProvider } from 'styled-components/native'
 import { BorderRadiusProps, ColorProps, FontSizeProps, FontWeightProps, SpaceProps } from 'styled-system'
-import { useStores } from '../../data/store'
 import { dark } from './DarkTheme'
 import {
   defaultBorderWidths,
@@ -83,12 +82,7 @@ interface UiThemeProviderProps {
 }
 
 export const UiThemeProvider: FC<UiThemeProviderProps> = ({ children, initialThemeName = 'light', customTheme }) => {
-  const { updateTheme } = useStores((root) => ({
-    updateTheme: root.settings.updateTheme,
-  }))
-
   const [themeName, setTheme] = useState(initialThemeName)
-  updateTheme(initialThemeName)
   if (customTheme) {
     const { extraTheme, name } = customTheme
     if (name !== themeName) {

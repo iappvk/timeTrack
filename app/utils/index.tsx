@@ -2,7 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { Dimensions, Platform, ScaledSize } from 'react-native'
 import { ThemeContext } from 'styled-components'
-
+import { ColorOptions } from '../components/theme/UiThemeProvider'
+const STORE_KEY_LOGIN_TOKEN = 'authToken'
+const STORE_KEY_ACCEPT_DISCLAIMER = 'acceptDisclaimer'
 const STORE_KEY_ALL_TASK = 'all_task'
 const useBreakPoint = (isEnabled: boolean) => {
   const [dimensions, setDimensions] = useState(Dimensions.get('window'))
@@ -158,4 +160,17 @@ const getRandomColor = () => {
   return `#${retData}`
 }
 
-export { CUSTOM_FONT, STORE_KEY_ALL_TASK, getFormattedTime, getFormattedTime1, getRandomColor }
+const getColourFromTheme = (color: ColorOptions, systemTheme: any) => {
+  return systemTheme?.colors[color]
+}
+
+export {
+  CUSTOM_FONT,
+  STORE_KEY_LOGIN_TOKEN,
+  STORE_KEY_ACCEPT_DISCLAIMER,
+  STORE_KEY_ALL_TASK,
+  getColourFromTheme,
+  getFormattedTime,
+  getFormattedTime1,
+  getRandomColor,
+}

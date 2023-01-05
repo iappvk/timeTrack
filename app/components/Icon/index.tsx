@@ -3,6 +3,15 @@ import { Text } from '../Text'
 import { ColorOptions, FontSizeOptions } from '../theme/UiThemeProvider'
 
 export const IconIds = {
+  PASSWORD: '\ue830',
+  AT: '\ue82e',
+  ARROW_TAIL_RIGHT: '\ue819',
+  ARROW_TAIL_LEFT: '\ue817',
+  TICK_FILL: '\ue802',
+  SMILE: '\uf118',
+  TIMER: '\ue811',
+  TIMER2: '\ue812',
+
   BALL: '\uf1e3',
   BIKE: '\uf206',
   CYCLE: '\uf21c',
@@ -14,26 +23,25 @@ export const IconIds = {
   MUSIC: '\ue821',
   LAPTOP: '\uf109',
   MOVIE: '\ue826',
-  SMILE: '\uf118',
+
   ARROW_RIGHT: '\ue80a',
   ARROW_UP: '\ue80b',
   ARROW_DOWN: '\ue808',
   ARROW_LEFT: '\ue809',
-  ARROW_TAIL_RIGHT: '\ue819',
+
   ARROW_TAIL_UP: '\ue81a',
   ARROW_TAIL_DOWN: '\ue816',
-  ARROW_TAIL_LEFT: '\ue817',
+
   ARROW_CIRCLE_RIGHT: '\uf138',
   DELETE: '\ue820',
   TICK: '\ue801',
-  TICK_FILL: '\ue802',
+
   CLOCK: '\ue803',
   HEART: '\ue804',
   HOME: '\ue80c',
   PLAY: '\ue80d',
   PLAY_CIRCLE: '\ue80e',
-  TIMER: '\ue811',
-  TIMER2: '\ue812',
+
   PROFILE: '\ue818',
   SHARE: '\ue815',
   FORWARD: '\uf081',

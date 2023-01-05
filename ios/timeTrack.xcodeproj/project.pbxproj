@@ -16,19 +16,19 @@
 		20BB1D8775B94B41BEAE42B4 /* SFPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F38E48F3BB449B3852F9444 /* SFPro-Bold.otf */; };
 		2AB760E9B59B4C1D99DAA96A /* SFProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70F675A40BB7498DA8FCB126 /* SFProText-Medium.ttf */; };
 		2AF5E835A01042F5BF7B5A66 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB67CCE631954B049DCBEA28 /* Roboto-Bold.ttf */; };
-		4FC19DB4C5774A93980F807B /* timer.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 360A1872860345189D2C3BF3 /* timer.woff2 */; };
 		540D76CB8F604A959AA70883 /* SFPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6A4E3C82D2BA4E1C8B1195DC /* SFPro-Medium.otf */; };
 		7699B88040F8A987B510C191 /* libPods-timeTrack-timeTrackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-timeTrack-timeTrackTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8290AF5A070B42A9BAF0AC81 /* timer.eot in Resources */ = {isa = PBXBuildFile; fileRef = B92282694455418CADC07093 /* timer.eot */; };
 		9951DFC803404EA08E038F2D /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25D612C26B2D432FA1B1699C /* SFProText-Semibold.ttf */; };
-		99F855A48EB34668A451C5C1 /* timer.woff in Resources */ = {isa = PBXBuildFile; fileRef = 7F2D3C2508654592B1CD40A4 /* timer.woff */; };
 		9AA76A7702634089B2CD7FB8 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE9075C81BB4ADE9BCB2131 /* Roboto-Medium.ttf */; };
-		AF607F265C7343988F92B8C6 /* timer.svg in Resources */ = {isa = PBXBuildFile; fileRef = C3C5411BE1734C04AE6B6C04 /* timer.svg */; };
 		B9C5EEB34B0A46928E6BD30D /* SFPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4A0B31102D4E129344ADBD /* SFPro-Regular.otf */; };
 		D120C0058C374CA3BAE94F3D /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A2287DA3944A49A4D7A2CE /* SFProText-Regular.ttf */; };
 		DEF7FC95C19145C1A6337121 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F206092FA7D4EC899DC7D1A /* Roboto-Regular.ttf */; };
-		E534369478204E8DB2CC5139 /* timer.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24B4FE5C9C64B8B82A61FBF /* timer.ttf */; };
+		963153FAFF674955AC9626AA /* timer.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87890E478CA24A889F17E41E /* timer.ttf */; };
+		D8CBAE8A16DB41F7A37332B8 /* timer.eot in Resources */ = {isa = PBXBuildFile; fileRef = 9E16CF553AC3439C90357C3E /* timer.eot */; };
+		99D658BAAE8743B29562D7E4 /* timer.svg in Resources */ = {isa = PBXBuildFile; fileRef = AA2F28BA59194182BA9BB6CA /* timer.svg */; };
+		1D0321B43DAD4440BE5AE8EA /* timer.woff in Resources */ = {isa = PBXBuildFile; fileRef = 09DA414310994217A007B6F5 /* timer.woff */; };
+		009A8E48C9B1420DBC4BA0CC /* timer.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 977FB05653A34BC1B6E4A24A /* timer.woff2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,6 @@
 		25D612C26B2D432FA1B1699C /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProText-Semibold.ttf"; path = "../app/assets/fonts/SFProText-Semibold.ttf"; sourceTree = "<group>"; };
 		2CE9075C81BB4ADE9BCB2131 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../app/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		2F38E48F3BB449B3852F9444 /* SFPro-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFPro-Bold.otf"; path = "../app/assets/fonts/SFPro-Bold.otf"; sourceTree = "<group>"; };
-		360A1872860345189D2C3BF3 /* timer.woff2 */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = timer.woff2; path = ../app/assets/fonts/timer.woff2; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-timeTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timeTrack.debug.xcconfig"; path = "Target Support Files/Pods-timeTrack/Pods-timeTrack.debug.xcconfig"; sourceTree = "<group>"; };
 		4E4A0B31102D4E129344ADBD /* SFPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFPro-Regular.otf"; path = "../app/assets/fonts/SFPro-Regular.otf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-timeTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timeTrack.release.xcconfig"; path = "Target Support Files/Pods-timeTrack/Pods-timeTrack.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,15 +64,16 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-timeTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timeTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4E3C82D2BA4E1C8B1195DC /* SFPro-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFPro-Medium.otf"; path = "../app/assets/fonts/SFPro-Medium.otf"; sourceTree = "<group>"; };
 		70F675A40BB7498DA8FCB126 /* SFProText-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProText-Medium.ttf"; path = "../app/assets/fonts/SFProText-Medium.ttf"; sourceTree = "<group>"; };
-		7F2D3C2508654592B1CD40A4 /* timer.woff */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = timer.woff; path = ../app/assets/fonts/timer.woff; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = timeTrack/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-timeTrack-timeTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timeTrack-timeTrackTests.release.xcconfig"; path = "Target Support Files/Pods-timeTrack-timeTrackTests/Pods-timeTrack-timeTrackTests.release.xcconfig"; sourceTree = "<group>"; };
-		B92282694455418CADC07093 /* timer.eot */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = timer.eot; path = ../app/assets/fonts/timer.eot; sourceTree = "<group>"; };
-		C3C5411BE1734C04AE6B6C04 /* timer.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = timer.svg; path = ../app/assets/fonts/timer.svg; sourceTree = "<group>"; };
-		E24B4FE5C9C64B8B82A61FBF /* timer.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = timer.ttf; path = ../app/assets/fonts/timer.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FB67CCE631954B049DCBEA28 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../app/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		FD6ED72717834545B0D275A3 /* SFProText-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProText-Bold.ttf"; path = "../app/assets/fonts/SFProText-Bold.ttf"; sourceTree = "<group>"; };
+		87890E478CA24A889F17E41E /* timer.ttf */ = {isa = PBXFileReference; name = "timer.ttf"; path = "../app/assets/fonts/timer.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9E16CF553AC3439C90357C3E /* timer.eot */ = {isa = PBXFileReference; name = "timer.eot"; path = "../app/assets/fonts/timer.eot"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AA2F28BA59194182BA9BB6CA /* timer.svg */ = {isa = PBXFileReference; name = "timer.svg"; path = "../app/assets/fonts/timer.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		09DA414310994217A007B6F5 /* timer.woff */ = {isa = PBXFileReference; name = "timer.woff"; path = "../app/assets/fonts/timer.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		977FB05653A34BC1B6E4A24A /* timer.woff2 */ = {isa = PBXFileReference; name = "timer.woff2"; path = "../app/assets/fonts/timer.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,11 +139,11 @@
 				70F675A40BB7498DA8FCB126 /* SFProText-Medium.ttf */,
 				02A2287DA3944A49A4D7A2CE /* SFProText-Regular.ttf */,
 				25D612C26B2D432FA1B1699C /* SFProText-Semibold.ttf */,
-				E24B4FE5C9C64B8B82A61FBF /* timer.ttf */,
-				B92282694455418CADC07093 /* timer.eot */,
-				C3C5411BE1734C04AE6B6C04 /* timer.svg */,
-				7F2D3C2508654592B1CD40A4 /* timer.woff */,
-				360A1872860345189D2C3BF3 /* timer.woff2 */,
+				87890E478CA24A889F17E41E /* timer.ttf */,
+				9E16CF553AC3439C90357C3E /* timer.eot */,
+				AA2F28BA59194182BA9BB6CA /* timer.svg */,
+				09DA414310994217A007B6F5 /* timer.woff */,
+				977FB05653A34BC1B6E4A24A /* timer.woff2 */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -307,11 +307,11 @@
 				2AB760E9B59B4C1D99DAA96A /* SFProText-Medium.ttf in Resources */,
 				D120C0058C374CA3BAE94F3D /* SFProText-Regular.ttf in Resources */,
 				9951DFC803404EA08E038F2D /* SFProText-Semibold.ttf in Resources */,
-				E534369478204E8DB2CC5139 /* timer.ttf in Resources */,
-				8290AF5A070B42A9BAF0AC81 /* timer.eot in Resources */,
-				AF607F265C7343988F92B8C6 /* timer.svg in Resources */,
-				99F855A48EB34668A451C5C1 /* timer.woff in Resources */,
-				4FC19DB4C5774A93980F807B /* timer.woff2 in Resources */,
+				963153FAFF674955AC9626AA /* timer.ttf in Resources */,
+				D8CBAE8A16DB41F7A37332B8 /* timer.eot in Resources */,
+				99D658BAAE8743B29562D7E4 /* timer.svg in Resources */,
+				1D0321B43DAD4440BE5AE8EA /* timer.woff in Resources */,
+				009A8E48C9B1420DBC4BA0CC /* timer.woff2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

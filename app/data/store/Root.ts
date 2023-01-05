@@ -1,127 +1,94 @@
-import { Instance, onSnapshot, types } from 'mobx-state-tree'
-import { storeData, STORE_KEY_ALL_TASK } from '../../utils'
+import { flow, Instance, onSnapshot, types } from 'mobx-state-tree'
+import { storeData, STORE_KEY_ACCEPT_DISCLAIMER, STORE_KEY_LOGIN_TOKEN } from '../../utils'
+import { list, login } from '../APIHandler'
 import { Error } from '../models/Error'
-import { Settings } from '../models/Settings'
-import { Task } from '../models/Task'
-import { Transaction } from '../models/Transaction'
-
-let groupBy = (array: any, key: any) => {
-  return array.reduce((result: any, obj: any) => {
-    ;(result[obj[key]] = result[obj[key]] || []).push(obj)
-    return result
-  }, {})
-}
+import { Station } from '../models/Stations'
+const defautCatchMessage = 'Oops! something sent wrong'
 
 const Root = types
   .model('Root', {
-    tasks: types.optional(types.array(Task), []),
+    token: types.optional(types.string, ''),
+    accetDisclaimer: types.optional(types.string, ''),
+    stations: types.optional(types.array(Station), []),
+    selectedId: types.optional(types.number, 0),
     error: Error,
-    settings: Settings,
-    transaction: Transaction,
   })
   .actions((self) => ({
     clearData: () => {
       const own = self
-      own.tasks = [] as any
+      own.stations = [] as any
+      own.selectedId = 0
+      own.accetDisclaimer = ''
+      own.token = ''
     },
-    addTaskFromAsync: (taskList: any) => {
+    setDataFromAsync: (params: any) => {
       const own = self
-      own.tasks = taskList
+      own.token = params.token
+      own.accetDisclaimer = params.accetDisclaimer
     },
-    addTask: (params: any) => {
-      const insertTask = []
-      const { noOfDays } = params
-      let itreation = 0
-      var today = new Date()
-      while (noOfDays > itreation) {
-        const tomorrow = new Date(today)
-        tomorrow.setDate(tomorrow.getDate() + itreation)
-        const strDate = tomorrow.toISOString().slice(0, 10)
-        // const numberOfSeconds = 1200000
-        insertTask.push({
-          ...params,
-          tags: '',
-          numberOfSeconds: 0, //numberOfSeconds + 300 * itreation,
-          groupId: today.getTime(),
-          id: tomorrow.getTime(),
-          date: strDate,
-        })
-        itreation = itreation + 1
+    setAccetDisclaimer: () => {
+      const own = self
+      own.accetDisclaimer = 'yes'
+      storeData('yes', STORE_KEY_ACCEPT_DISCLAIMER)
+    },
+    loginAPI: flow(function* loginAPI(parms) {
+      try {
+        const own = self
+        const response = yield login(parms)
+        own.token = response.token
+        storeData(response.token, STORE_KEY_LOGIN_TOKEN)
+      } catch (error: any) {
+        const customError = {
+          message: defautCatchMessage,
+        }
+        self.error.setMessage(customError.message, 'NEGATIVE')
+        throw customError
       }
-
-      console.log(' The array :' + JSON.stringify(insertTask))
-
+    }),
+    listAPI: flow(function* listAPI() {
+      try {
+        const own = self
+        const response = yield list()
+        console.log(JSON.stringify(response))
+        own.stations = response?.data
+      } catch (error: any) {
+        const customError = {
+          message: defautCatchMessage,
+        }
+        self.error.setMessage(customError.message, 'NEGATIVE')
+        throw customError
+      }
+    }),
+    updateTxn: (params: any) => {
       const own = self
-      const retData = [...own.tasks, ...insertTask] as any
-      own.tasks = retData
-      storeData(retData, STORE_KEY_ALL_TASK)
+      if (params.selectedId) {
+        own.selectedId = params.selectedId
+      }
     },
-    updateTask: (timeString: any, msec: any) => {
+    updateCounter: (params: any) => {
       const own = self
-      const currentTask = own.tasks.filter((item: any) => item.id === own.transaction.id)[0]
-      currentTask.numberOfSeconds = msec
-      currentTask.timeString = timeString
+      const retData = own.stations.find((item: any) => item.id === own.selectedId)
 
-      const exceptTask = own.tasks.filter((item: any) => item.id !== own.transaction.id)
-      const retData = [...exceptTask, currentTask] as any
-      own.tasks = retData
-      storeData(retData, STORE_KEY_ALL_TASK)
-    },
-    updateTaskDetails: (params: any) => {
-      const own = self
-      const currentTask = own.tasks.filter((item: any) => item.id === own.transaction.id)[0]
-      currentTask.numberOfSeconds = params.numberOfSeconds
-      currentTask.timeString = params.timeString
-      currentTask.tags = params.tags
-      // currentTask.icon = params.icon
-      // currentTask.color = params.color
-
-      const exceptTask = own.tasks.filter((item: any) => item.id !== own.transaction.id)
-      own.tasks = [...exceptTask, currentTask] as any
-      storeData(own.tasks, STORE_KEY_ALL_TASK)
+      if (retData) {
+        retData.counter = params.counter
+        const restArr = own.stations.filter((item: any) => item.id !== own.selectedId)
+        const stations = [...restArr, retData].sort((a, b) => {
+          return a.id - b.id
+        }) as any
+        own.stations = stations
+      }
     },
   }))
   .views((self) => ({
-    getTaskList: (filerDate: any) => {
-      const strDate = filerDate.toISOString().slice(0, 10)
-      const retData = self.tasks.filter((item: any) => item.date === strDate)
-      return retData.sort((a, b) => {
-        return a.id - b.id
-      })
-    },
-    getReport: (days: number) => {
-      const own = self
-      const endDate = new Date()
-
-      const startDate = new Date(endDate)
-      startDate.setDate(startDate.getDate() - days)
-
-      const retDat = [...own.tasks].filter(
-        (item: any) => item.id >= startDate.getTime() && item.id <= endDate.getTime(),
-      )
-
-      const retData = groupBy(retDat, 'groupId')
-      const objArray = Object.keys(retData).map((item: any) => {
-        let numberOfSeconds = 0
-        let tags = [] as any
-        retData[item].map((dataItem: any) => {
-          numberOfSeconds = numberOfSeconds + dataItem.numberOfSeconds
-          dataItem.tags !== undefined && dataItem.tags !== '' && tags.push(dataItem.tags)
-        })
-
-        return { ...retData[item][0], numberOfSeconds, tags }
-      })
-
-      console.log(' The log : ' + JSON.stringify(objArray))
-      return objArray
+    getDetail: () => {
+      const retData = self.stations.find((item: any) => item.id === self.selectedId)
+      return retData
     },
   }))
 
 const RootStore = Root.create({
-  tasks: [],
-  error: { message: '' },
-  settings: {},
-  transaction: {},
+  stations: [],
+  error: { message: '', type: 'NEGATIVE' },
 })
 
 onSnapshot(RootStore, (snapshot) => {

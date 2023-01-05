@@ -19,6 +19,8 @@ const colors = {
   YELLOW: '#FFB900',
   TRANSPARENT45: 'rgba(0, 0, 0, 0.45)',
   RED: '#FF0000',
+  LADING_BG: '#E1E9EE',
+  LADING_HIGHTLIGHT: '#F2F8FC',
 }
 
 const dark = {

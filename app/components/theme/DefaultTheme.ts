@@ -1,6 +1,7 @@
 const defaultColors = {
-  BRAND_PRIMARY_ACTION: '#EC1C24',
-  BRAND_PRIMARY_BG: '#AA0023',
+  BRAND_PRIMARY_ACTION: '#DD1D21',
+  BRAND_PRIMARY_BG: '#DD1D21',
+  TEXT_INPUT_UNDERLINE: '#F0F4F5',
 
   PRIMARY: '#EC1C24',
   WHITE: '#FFFFFF',
@@ -36,6 +37,8 @@ const defaultColors = {
   TEXT_INVERSE_TERTIARY: 'rgba(255, 255, 255, 0.54)',
   MODAL_BG: '#000000bb',
   MODAL_UNDERLAY: '#000000cc',
+  LADING_BG: '#E1E9EE',
+  LADING_HIGHTLIGHT: '#F2F8FC',
 }
 
 const defaultFontSizes = {

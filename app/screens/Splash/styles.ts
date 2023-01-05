@@ -7,7 +7,7 @@ export const styles = {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'BRAND_PRIMARY_BG',
+    backgroundColor: 'WHITE',
   } as BoxProps,
   splashTitle: {
     fontSize: 23,
